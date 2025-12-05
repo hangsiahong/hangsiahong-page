@@ -1,12 +1,17 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { config } from '../config';
 
 interface GitHubStats {
   public_repos: number;
   followers: number;
   following: number;
   total_stars: number;
+}
+
+interface Repository {
+  stargazers_count: number;
 }
 
 export default function GitHubStats() {
@@ -17,14 +22,14 @@ export default function GitHubStats() {
     async function fetchStats() {
       try {
         // Fetch user data
-        const userRes = await fetch('https://api.github.com/users/hangsiahong');
+        const userRes = await fetch(`${config.api.baseUrl}/users/${config.github.username}`);
         const userData = await userRes.json();
 
         // Fetch repositories to count stars
-        const reposRes = await fetch('https://api.github.com/users/hangsiahong/repos?per_page=100');
-        const reposData = await reposRes.json();
+        const reposRes = await fetch(`${config.api.baseUrl}/users/${config.github.username}/repos?per_page=100`);
+        const reposData: Repository[] = await reposRes.json();
 
-        const totalStars = reposData.reduce((acc: number, repo: any) => acc + repo.stargazers_count, 0);
+        const totalStars = reposData.reduce((acc: number, repo: Repository) => acc + repo.stargazers_count, 0);
 
         setStats({
           public_repos: userData.public_repos,

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { config } from '../config';
 
 interface Repository {
   id: number;
@@ -23,13 +24,14 @@ export default function Projects() {
     async function fetchProjects() {
       try {
         // Fetch personal repositories
-        const personalRes = await fetch('https://api.github.com/users/hangsiahong/repos?sort=updated&per_page=6');
-        const personalData = await personalRes.json();
+        const personalRes = await fetch(`${config.api.baseUrl}/users/${config.github.username}/repos?sort=updated&per_page=6`);
+        const personalData: Repository[] = await personalRes.json();
+        // Filter out portfolio/page repositories to show actual projects
         setPersonalRepos(personalData.filter((repo: Repository) => !repo.name.includes('page')));
 
         // Fetch KOOMPI organization repositories
-        const koompiRes = await fetch('https://api.github.com/orgs/KOOMPI/repos?sort=updated&per_page=6');
-        const koompiData = await koompiRes.json();
+        const koompiRes = await fetch(`${config.api.baseUrl}/orgs/${config.github.organization}/repos?sort=updated&per_page=6`);
+        const koompiData: Repository[] = await koompiRes.json();
         setKoompiRepos(koompiData.slice(0, 6));
       } catch (error) {
         console.error('Error fetching projects:', error);

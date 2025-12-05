@@ -1,5 +1,21 @@
 import GitHubStats from './components/GitHubStats';
 import Projects from './components/Projects';
+import { config } from './config';
+
+const SKILLS = [
+  'JavaScript',
+  'TypeScript',
+  'React',
+  'Next.js',
+  'Node.js',
+  'Python',
+  'Git',
+  'Docker',
+  'PostgreSQL',
+  'MongoDB',
+  'Tailwind CSS',
+  'Linux',
+] as const;
 
 export default function Home() {
   return (
@@ -19,7 +35,7 @@ export default function Home() {
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <a
-              href="https://github.com/hangsiahong"
+              href={`https://github.com/${config.github.username}`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
@@ -27,7 +43,7 @@ export default function Home() {
               View GitHub Profile
             </a>
             <a
-              href="https://github.com/KOOMPI"
+              href={`https://github.com/${config.github.organization}`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gray-700 hover:bg-gray-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
@@ -69,20 +85,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-center text-white">Skills & Technologies</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {[
-              'JavaScript',
-              'TypeScript',
-              'React',
-              'Next.js',
-              'Node.js',
-              'Python',
-              'Git',
-              'Docker',
-              'PostgreSQL',
-              'MongoDB',
-              'Tailwind CSS',
-              'Linux',
-            ].map((skill) => (
+            {SKILLS.map((skill) => (
               <div
                 key={skill}
                 className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors text-center"
@@ -111,7 +114,7 @@ export default function Home() {
           </p>
           <div className="flex gap-6 justify-center flex-wrap">
             <a
-              href="https://github.com/hangsiahong"
+              href={`https://github.com/${config.github.username}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-blue-400 transition-colors text-lg"
@@ -120,7 +123,7 @@ export default function Home() {
             </a>
             <span className="text-gray-600">•</span>
             <a
-              href="https://github.com/KOOMPI"
+              href={`https://github.com/${config.github.organization}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-blue-400 transition-colors text-lg"
