@@ -15,7 +15,18 @@ module.exports = {
         sans: ['var(--font-karla)', 'sans-serif'],
         recursive: ['var(--font-recursive)', 'sans-serif'],
       },
+      animation: {
+        move: "move 5s linear infinite",
+      },
+      keyframes: {
+        move: {
+          "0%": { transform: "translateX(-200px)" },
+          "100%": { transform: "translateX(200px)" },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

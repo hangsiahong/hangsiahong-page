@@ -3,7 +3,9 @@ import Manifesto from './components/Manifesto';
 import Projects from './components/Projects';
 import WorkExperience from './components/WorkExperience';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { AnimatedCardDemo } from './components/AnimatedCardDemo';
 import { config } from './config';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -11,6 +13,13 @@ export default function Home() {
       <Hero />
       <WorkExperience />
       <Manifesto />
+
+      {/* Tech Stack Demo */}
+      <section className="py-24 bg-white dark:bg-black relative border-t border-gray-200 dark:border-gray-900">
+        <div className="container mx-auto px-4">
+          <AnimatedCardDemo />
+        </div>
+      </section>
 
       {/* Projects Section */}
       <section className="py-24 bg-gray-50 dark:bg-black relative border-t border-gray-200 dark:border-gray-900">
@@ -47,6 +56,12 @@ export default function Home() {
               >
                 KOOMPI
               </a>
+              <Link
+                href="/blog"
+                className="text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors"
+              >
+                Blog
+              </Link>
               <ThemeToggle />
             </div>
           </div>

@@ -1,0 +1,26 @@
+---
+title: 'Why I Love Rust'
+publishedAt: '2025-12-04'
+summary: 'Exploring memory safety, performance, and the amazing Cargo ecosystem.'
+category: 'Engineering'
+---
+
+# Why I Love Rust
+
+Rust has been my favorite language for systems programming.
+
+## Memory Safety
+
+The borrow checker ensures that data races and null pointer exceptions are things of the past.
+
+```rust
+fn main() {
+    let s1 = String::from("hello");
+    let s2 = s1; 
+    // println!("{}, world!", s1); // error: value borrowed here after move
+}
+```
+
+## Tooling
+
+Cargo is hands-down the best package manager I've used. It handles dependencies, building, testing, and documentation generation with ease.
