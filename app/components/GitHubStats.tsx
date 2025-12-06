@@ -72,9 +72,9 @@ export default function GitHubStats() {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       {statItems.map((item) => (
-        <div key={item.label} className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
-          <div className="text-3xl font-bold text-blue-400">{item.value}</div>
-          <div className="text-gray-400 text-sm mt-1">{item.label}</div>
+        <div key={item.label} className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-500 transition-colors shadow-sm dark:shadow-none">
+          <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">{item.value}</div>
+          <div className="text-gray-600 dark:text-gray-400 text-sm mt-1">{item.label}</div>
         </div>
       ))}
     </div>
